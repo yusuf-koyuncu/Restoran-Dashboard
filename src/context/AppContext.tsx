@@ -292,5 +292,4 @@ export const useAppContext = () => {
     return context;
 };
 
-// İstendiği üzere useApp hook'unu da dışa aktarıyoruz
 export const useApp = useAppContext;
