@@ -42,12 +42,34 @@ export interface Notification {
     id: number;
 }
 
+export type OrderStatus = 'Hazırlanıyor' | 'Hazır' | 'Teslim Edildi' | 'İptal';
+
+export interface OrderItem {
+    id: number;
+    menuId: number;
+    name: string;
+    quantity: number;
+    price: number;
+}
+
+export interface Order {
+    id: number;
+    customerName: string;
+    items: OrderItem[];
+    status: OrderStatus;
+    total: number;
+    createdAt: string;
+}
+
 interface AppContextType {
     inventory: Material[];
     menus: Menu[];
     recentOrders: RecentOrder[];
     notifications: Notification[];
+    orders: Order[];
     simulateOrder: (menuId: number) => void;
+    addOrder: (customerName: string, items: { menuId: number, quantity: number }[]) => void;
+    updateOrderStatus: (orderId: number, status: OrderStatus) => void;
     removeNotification: (id: number) => void;
     resetDemo: () => void;
 }
@@ -112,6 +134,29 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
     const [menus, setMenus] = useState<Menu[]>(initialMenus);
     const [recentOrders, setRecentOrders] = useState<RecentOrder[]>([]);
     const [notifications, setNotifications] = useState<Notification[]>([]);
+    const [orders, setOrders] = useState<Order[]>([
+        {
+            id: 1,
+            customerName: 'Ahmet Yılmaz',
+            items: [
+                { id: 1, menuId: 1, name: 'Hamburger Menü', quantity: 2, price: 150 }
+            ],
+            status: 'Hazırlanıyor',
+            total: 300,
+            createdAt: new Date(Date.now() - 15 * 60000).toISOString()
+        },
+        {
+            id: 2,
+            customerName: 'Ayşe Demir',
+            items: [
+                { id: 2, menuId: 2, name: 'Margherita Pizza', quantity: 1, price: 140 },
+                { id: 3, menuId: 3, name: 'Sezar Salata', quantity: 1, price: 110 }
+            ],
+            status: 'Hazır',
+            total: 250,
+            createdAt: new Date(Date.now() - 5 * 60000).toISOString()
+        }
+    ]);
 
     const showNotification = (type: 'success' | 'error', message: string) => {
         const id = Date.now();
@@ -121,6 +166,49 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
 
     const removeNotification = (id: number) => {
         setNotifications(prev => prev.filter(n => n.id !== id));
+    };
+
+    const addOrder = (customerName: string, items: { menuId: number, quantity: number }[]) => {
+        let total = 0;
+        const orderItems: OrderItem[] = items.map((item, index) => {
+            const menu = menus.find(m => m.id === item.menuId);
+            if (!menu) throw new Error(`Menu tapılmadı ID: ${item.menuId}`);
+            const price = menu.salePrice;
+            total += price * item.quantity;
+            
+            // Sipariş edilen her porsiyon için simulateOrder mantığı
+            // (gerçek bir senaryoda bu stok kontrolünden sonra yapılmalı)
+            for (let i = 0; i < item.quantity; i++) {
+                 simulateOrder(item.menuId); 
+            }
+
+            return {
+                id: Date.now() + index,
+                menuId: item.menuId,
+                name: menu.name,
+                quantity: item.quantity,
+                price: price
+            };
+        });
+
+        const newOrder: Order = {
+            id: Date.now(),
+            customerName,
+            items: orderItems,
+            status: 'Hazırlanıyor',
+            total,
+            createdAt: new Date().toISOString()
+        };
+
+        setOrders(prev => [newOrder, ...prev]);
+        showNotification('success', 'Yeni sipariş başarıyla eklendi.');
+    };
+
+    const updateOrderStatus = (orderId: number, status: OrderStatus) => {
+        setOrders(prev => prev.map(order => 
+            order.id === orderId ? { ...order, status } : order
+        ));
+        showNotification('success', `Sipariş #${orderId} durumu '${status}' olarak güncellendi.`);
     };
 
     const simulateOrder = (menuId: number) => {
@@ -184,7 +272,10 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
             menus,
             recentOrders,
             notifications,
+            orders,
             simulateOrder,
+            addOrder,
+            updateOrderStatus,
             removeNotification,
             resetDemo
         }}>
@@ -200,3 +291,6 @@ export const useAppContext = () => {
     }
     return context;
 };
+
+// İstendiği üzere useApp hook'unu da dışa aktarıyoruz
+export const useApp = useAppContext;
