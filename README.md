@@ -1,36 +1,32 @@
-# Restoran Dashboard
+# 🍽️ Restaurant Management Dashboard & API
+> **Yusuf Koyuncu tarafından geliştirilmiş, modern restoran operasyonları için hızlı ve kullanıcı dostu yönetim paneli.**
 
-Gelişmiş restoran yönetim paneli. Bu proje, sipariş takibi, finansal özetler ve menü yönetimi gibi temel restoran işlemlerini tek bir arayüzden yönetmek için geliştirilmiştir.
+---
+
+## 📖 Proje Hakkında
+Bu çalışma, bir restoranın günlük sipariş trafiğini, menü yönetimini ve finansal istatistiklerini takip edebilmesi için tasarlanmıştır. Backend tarafında güçlü bir API mimarisi sunarken, frontend tarafında verileri anlamlı bir yönetim paneline dönüştürür.
 
 ## 📊 Dashboard Özellikleri
-
-- **Canlı Sipariş Takibi:** Gelen siparişlerin anlık olarak görüntülenmesi ve yönetimi.
+- **Canlı Sipariş Takibi:** Gelen siparişlerin anlık olarak görüntülenmesi ve durum yönetimi.
 - **Finansal Özet:** Günlük toplam kazanç ve sipariş hacmi grafikleri.
 - **Menü Yönetimi:** Ürün ekleme, silme ve fiyat güncelleme simülasyonu.
 - **Masa Durumu:** Restoran içindeki masaların doluluk oranlarının takibi.
 
 ## 🚀 API Endpoints
-
-Proje içerisindeki temel API uç noktaları ve işlevleri aşağıdadır:
+Sistem, aşağıdaki uç noktalar üzerinden veri alışverişi yapmaktadır:
 
 | Method | Endpoint | Açıklama |
 |---|---|---|
 | `GET` | `/api/menu` | Tüm menü içeriğini ve fiyatları getirir. |
 | `GET` | `/api/orders` | Mevcut tüm siparişlerin listesini döner. |
-| `POST` | `/api/orders` | Yeni bir sipariş oluşturur (Masa no, ürünler vb.). |
-| `PUT` | `/api/orders/:id` | Belirli bir siparişin durumunu günceller (Hazırlanıyor/Tamamlandı). |
-| `GET` | `/api/stats` | Dashboard için günlük satış ve popüler ürün istatistiklerini getirir. |
+| `POST` | `/api/orders` | Yeni bir sipariş oluşturur. |
+| `PUT` | `/api/orders/:id` | Sipariş durumunu günceller (Hazırlanıyor/Tamamlandı). |
+| `GET` | `/api/stats` | Dashboard grafikleri için istatistik verilerini döner. |
 
-> 💡 **Not:** Bu proje şu anda **In-Memory Data** yapısını kullanmaktadır. Veriler geçici bellek üzerinde tutulur, bu sayede herhangi bir veritabanı kurulumu gerektirmeden hızlıca test edilebilir. Mimari, ileride PostgreSQL veya MongoDB gibi sistemlere kolayca adapte edilecek şekilde (Repository Pattern) kurgulanmıştır.
+---
 
-## Kurulum
+## 🛠️ Teknik Notlar
+> 💡 **Veri Yapısı:** Bu proje şu anda **In-Memory Data** (Bellek içi veri) yapısını kullanmaktadır. Bu sayede herhangi bir veritabanı (Database) kurulumu gerektirmeden direkt çalıştırılabilir ve hızlıca test edilebilir. Mimari, ileride SQL veya NoSQL sistemlere kolayca adapte edilecek şekilde kurgulanmıştır.
 
-Projeyi yerel ortamınızda çalıştırmak için aşağıdaki adımları izleyin:
-
-```bash
-# Bağımlılıkları yükleyin
-npm install
-
-# Geliştirme sunucusunu başlatın
-npm run dev
-```
+---
+**Geliştirici:** [Yusuf Koyuncu](https://github.com/yusuf-koyuncu)
