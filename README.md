@@ -1,32 +1,53 @@
-# 🍽️ Restaurant Management Dashboard & API
-> **Yusuf Koyuncu tarafından geliştirilmiş, modern restoran operasyonları için hızlı ve kullanıcı dostu yönetim paneli.**
+# 🍽️ Restoran Yönetim Paneli (Restaurant Dashboard)
+
+> **Modern restoran operasyonları için geliştirilmiş, hızlı, dinamik ve kullanıcı dostu yönetim paneli.**
+
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Restoran%20Dashboard-success?style=for-the-badge&logo=vercel)](https://restoran-final-demo.vercel.app)
 
 ---
 
 ## 📖 Proje Hakkında
-Bu çalışma, bir restoranın günlük sipariş trafiğini, menü yönetimini ve finansal istatistiklerini takip edebilmesi için tasarlanmıştır. Backend tarafında güçlü bir API mimarisi sunarken, frontend tarafında verileri anlamlı bir yönetim paneline dönüştürür.
+Bu proje, restoranların günlük sipariş trafiğini, menü yönetimini ve finansal istatistiklerini gerçek zamanlı takip edebilmesi için tasarlanmıştır. Güçlü bir "Global State" mimarisine sahip olan bu uygulama, kullanıcılara sorunsuz ve hızlı bir panel deneyimi sunar. Simüle edilmiş veri akışıyla anında sipariş alabilir, stoklarınızı yönetebilir ve restoran trafiğini gözlemleyebilirsiniz.
 
-## 📊 Dashboard Özellikleri
-- **Canlı Sipariş Takibi:** Gelen siparişlerin anlık olarak görüntülenmesi ve durum yönetimi.
-- **Finansal Özet:** Günlük toplam kazanç ve sipariş hacmi grafikleri.
-- **Menü Yönetimi:** Ürün ekleme, silme ve fiyat güncelleme simülasyonu.
-- **Masa Durumu:** Restoran içindeki masaların doluluk oranlarının takibi.
+## 🚀 Öne Çıkan Özellikler
+- **Canlı Sipariş Yönetimi:** Yeni siparişlerin anlık olarak panele düşmesi ve hazırlanıyor/tamamlandı dönüşümleri.
+- **Dinamik Envanter:** Gelen siparişlere göre veya tarifteki malzemelere göre stokların otomatik düşmesi.
+- **Finansal İstatistikler:** Günlük kazanç, sipariş hacmi ve masa doluluk oranları.
+- **Kapsamlı Menü:** Ürün simülasyonu, fiyatlandırma ve tarif yönetimi.
 
-## 🚀 API Endpoints
-Sistem, aşağıdaki uç noktalar üzerinden veri alışverişi yapmaktadır:
+## 🛠️ Teknolojiler
+Modern web altyapısı tercih edilerek yüksek performans ve ölçeklenebilirlik hedeflenmiştir:
 
-| Method | Endpoint | Açıklama |
-|---|---|---|
-| `GET` | `/api/menu` | Tüm menü içeriğini ve fiyatları getirir. |
-| `GET` | `/api/orders` | Mevcut tüm siparişlerin listesini döner. |
-| `POST` | `/api/orders` | Yeni bir sipariş oluşturur. |
-| `PUT` | `/api/orders/:id` | Sipariş durumunu günceller (Hazırlanıyor/Tamamlandı). |
-| `GET` | `/api/stats` | Dashboard grafikleri için istatistik verilerini döner. |
+| Teknoloji | Açıklama |
+| :--- | :--- |
+| **React 19** | Modern, hızlı ve sürdürülebilir kullanıcı arayüzü |
+| **TypeScript** | Statik tip kontrolü ile tip güvenli ve hatasız kod mimarisi |
+| **Context API** | Uygulama geneli kesintisiz, hafif 'Global State' yönetimi |
+| **Tailwind CSS** | Hızlı, şık ve tamamen responsive (+mobil uyumlu) UI tasarımı |
+| **Vercel** | Kesintisiz ve yüksek performanslı canlı yayın (Deployment) |
 
 ---
 
-## 🛠️ Teknik Notlar
-> 💡 **Veri Yapısı:** Bu proje şu anda **In-Memory Data** (Bellek içi veri) yapısını kullanmaktadır. Bu sayede herhangi bir veritabanı (Database) kurulumu gerektirmeden direkt çalıştırılabilir ve hızlıca test edilebilir. Mimari, ileride SQL veya NoSQL sistemlere kolayca adapte edilecek şekilde kurgulanmıştır.
+## 💻 Kurulum ve Çalıştırma
+
+Projeyi yerel ortamınızda (local) çalıştırmak için aşağıdaki adımları izleyebilirsiniz:
+
+1. **Projeyi Klonlayın:**
+   ```bash
+   git clone https://github.com/yusuf-koyuncu/Restoran-Dashboard.git
+   cd Restoran-Dashboard
+   ```
+
+2. **Bağımlılıkları Yükleyin:**
+   ```bash
+   npm install
+   ```
+
+3. **Geliştirme Sunucusunu Başlatın:**
+   ```bash
+   npm run dev
+   ```
+   *Tarayıcınızda `http://localhost:5173` adresine giderek projeyi görüntüleyebilirsiniz.*
 
 ---
 **Geliştirici:** [Yusuf Koyuncu](https://github.com/yusuf-koyuncu)
