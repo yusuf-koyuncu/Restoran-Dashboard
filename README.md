@@ -1,73 +1,36 @@
-# React + TypeScript + Vite
+# Restoran Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Gelişmiş restoran yönetim paneli. Bu proje, sipariş takibi, finansal özetler ve menü yönetimi gibi temel restoran işlemlerini tek bir arayüzden yönetmek için geliştirilmiştir.
 
-Currently, two official plugins are available:
+## 📊 Dashboard Özellikleri
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Canlı Sipariş Takibi:** Gelen siparişlerin anlık olarak görüntülenmesi ve yönetimi.
+- **Finansal Özet:** Günlük toplam kazanç ve sipariş hacmi grafikleri.
+- **Menü Yönetimi:** Ürün ekleme, silme ve fiyat güncelleme simülasyonu.
+- **Masa Durumu:** Restoran içindeki masaların doluluk oranlarının takibi.
 
-## React Compiler
+## 🚀 API Endpoints
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Proje içerisindeki temel API uç noktaları ve işlevleri aşağıdadır:
 
-## Expanding the ESLint configuration
+| Method | Endpoint | Açıklama |
+|---|---|---|
+| `GET` | `/api/menu` | Tüm menü içeriğini ve fiyatları getirir. |
+| `GET` | `/api/orders` | Mevcut tüm siparişlerin listesini döner. |
+| `POST` | `/api/orders` | Yeni bir sipariş oluşturur (Masa no, ürünler vb.). |
+| `PUT` | `/api/orders/:id` | Belirli bir siparişin durumunu günceller (Hazırlanıyor/Tamamlandı). |
+| `GET` | `/api/stats` | Dashboard için günlük satış ve popüler ürün istatistiklerini getirir. |
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+> 💡 **Not:** Bu proje şu anda **In-Memory Data** yapısını kullanmaktadır. Veriler geçici bellek üzerinde tutulur, bu sayede herhangi bir veritabanı kurulumu gerektirmeden hızlıca test edilebilir. Mimari, ileride PostgreSQL veya MongoDB gibi sistemlere kolayca adapte edilecek şekilde (Repository Pattern) kurgulanmıştır.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Kurulum
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+Projeyi yerel ortamınızda çalıştırmak için aşağıdaki adımları izleyin:
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+```bash
+# Bağımlılıkları yükleyin
+npm install
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+# Geliştirme sunucusunu başlatın
+npm run dev
 ```
