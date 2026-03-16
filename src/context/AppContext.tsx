@@ -176,8 +176,6 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
             const price = menu.salePrice;
             total += price * item.quantity;
             
-            // Sipariş edilen her porsiyon için simulateOrder mantığı
-            // (gerçek bir senaryoda bu stok kontrolünden sonra yapılmalı)
             for (let i = 0; i < item.quantity; i++) {
                  simulateOrder(item.menuId); 
             }
@@ -215,7 +213,6 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
         const menu = menus.find(m => m.id === menuId);
         if (!menu) return;
 
-        // VALIDATION: Check if enough stock exists for all ingredients
         let errorMsg = '';
         for (const ingredient of menu.recipe) {
             const material = inventory.find(i => i.name === ingredient.name);
@@ -234,7 +231,6 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
             return;
         }
 
-        // SUCCESS: Deduct from inventory
         setInventory(prevInventory =>
             prevInventory.map(item => {
                 const consumedIngredient = menu.recipe.find(ing => ing.name === item.name);
@@ -245,7 +241,6 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
             })
         );
 
-        // LOG ORDER
         const consumptionSummary = menu.recipe.map(ing => `-${ing.amount}${ing.unit} ${ing.name}`).join(', ');
         const newOrder: RecentOrder = {
             id: Date.now(),
@@ -254,7 +249,7 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
             consumption: consumptionSummary
         };
 
-        setRecentOrders(prev => [newOrder, ...prev].slice(0, 10)); // Keep last 10
+        setRecentOrders(prev => [newOrder, ...prev].slice(0, 10));
         showNotification('success', `Başarılı: 1x ${menu.name} satıldı. Depo güncellendi.`);
     };
 

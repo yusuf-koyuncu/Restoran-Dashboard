@@ -34,7 +34,7 @@ export const Orders = () => {
         time: new Date(o.createdAt).toLocaleTimeString('tr-TR', { hour: '2-digit', minute: '2-digit' }),
         status: o.status,
         total: o.total,
-        table: 'Masa/Paket', // Placeholder since context doesn't track this yet
+        table: 'Masa/Paket',
         paymentMethod: 'Bilinmiyor'
     }));
 
