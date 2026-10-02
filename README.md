@@ -1,53 +1,30 @@
-# 🍽️ Restoran Yönetim Paneli (Restaurant Dashboard)
+# 🍽 Restaurant Management Dashboard
 
-> **Modern restoran operasyonları için geliştirilmiş, hızlı, dinamik ve kullanıcı dostu yönetim paneli.**
+A fast, dynamic and user-friendly management panel for modern restaurant operations.
 
-[![Live Demo](https://img.shields.io/badge/Live%20Demo-Restoran%20Dashboard-success?style=for-the-badge&logo=vercel)](https://restoran-final-demo.vercel.app)
+[![Live Demo](https://img.shields.io/badge/Live_Demo-Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://restoran-final-demo.vercel.app)
+![React](https://img.shields.io/badge/React_19-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)
 
----
+## ✨ Features
 
-## 📖 Proje Hakkında
-Bu proje, restoranların günlük sipariş trafiğini, menü yönetimini ve finansal istatistiklerini gerçek zamanlı takip edebilmesi için tasarlanmıştır. Güçlü bir "Global State" mimarisine sahip olan bu uygulama, kullanıcılara sorunsuz ve hızlı bir panel deneyimi sunar. Simüle edilmiş veri akışıyla anında sipariş alabilir, stoklarınızı yönetebilir ve restoran trafiğini gözlemleyebilirsiniz.
+- 🧾 **Live order management:** process orders in real time with status transitions
+- 📦 **Dynamic inventory:** stock updates automatically as orders come in
+- 📊 **Financial statistics:** daily revenue, order volume and table occupancy
+- 📖 **Menu management:** products, pricing and recipe simulation
 
-## 🚀 Öne Çıkan Özellikler
-- **Canlı Sipariş Yönetimi:** Yeni siparişlerin anlık olarak panele düşmesi ve hazırlanıyor/tamamlandı dönüşümleri.
-- **Dinamik Envanter:** Gelen siparişlere göre veya tarifteki malzemelere göre stokların otomatik düşmesi.
-- **Finansal İstatistikler:** Günlük kazanç, sipariş hacmi ve masa doluluk oranları.
-- **Kapsamlı Menü:** Ürün simülasyonu, fiyatlandırma ve tarif yönetimi.
+## 🛠 Tech stack
 
-## 🛠️ Teknolojiler
-Modern web altyapısı tercih edilerek yüksek performans ve ölçeklenebilirlik hedeflenmiştir:
+- **UI:** React 19, TypeScript
+- **State:** Context API
+- **Styling:** Tailwind CSS (responsive)
+- **Deployment:** Vercel
 
-| Teknoloji | Açıklama |
-| :--- | :--- |
-| **React 19** | Modern, hızlı ve sürdürülebilir kullanıcı arayüzü |
-| **TypeScript** | Statik tip kontrolü ile tip güvenli ve hatasız kod mimarisi |
-| **Context API** | Uygulama geneli kesintisiz, hafif 'Global State' yönetimi |
-| **Tailwind CSS** | Hızlı, şık ve tamamen responsive (+mobil uyumlu) UI tasarımı |
-| **Vercel** | Kesintisiz ve yüksek performanslı canlı yayın (Deployment) |
+## 🚀 Getting started
 
----
-
-## 💻 Kurulum ve Çalıştırma
-
-Projeyi yerel ortamınızda (local) çalıştırmak için aşağıdaki adımları izleyebilirsiniz:
-
-1. **Projeyi Klonlayın:**
-   ```bash
-   git clone https://github.com/yusuf-koyuncu/Restoran-Dashboard.git
-   cd Restoran-Dashboard
-   ```
-
-2. **Bağımlılıkları Yükleyin:**
-   ```bash
-   npm install
-   ```
-
-3. **Geliştirme Sunucusunu Başlatın:**
-   ```bash
-   npm run dev
-   ```
-   *Tarayıcınızda `http://localhost:5173` adresine giderek projeyi görüntüleyebilirsiniz.*
-
----
-**Geliştirici:** [Yusuf Koyuncu](https://github.com/yusuf-koyuncu)
+```bash
+git clone https://github.com/yusuf-koyuncu/Restoran-Dashboard.git
+cd Restoran-Dashboard
+npm install
+npm run dev
