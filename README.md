@@ -11,6 +11,18 @@ A fast, dynamic and user-friendly management panel for modern restaurant operati
 
 The dashboard lets a restaurant follow its daily order traffic, menu and financial statistics in one place. It is built around a global state (React Context API), and orders come from a simulated data stream, so you can take orders, manage stock and watch the restaurant's traffic right away.
 
+## 📸 Screenshots
+
+The interface is in Turkish and starts with demo data (the "Sıfırla" button resets it).
+
+| Dashboard | Orders |
+|---|---|
+| ![Dashboard](docs/screenshots/01-dashboard.png) | ![Orders](docs/screenshots/02-orders.png) |
+
+| Inventory with low-stock alerts | Menu, recipes and profit margins |
+|---|---|
+| ![Inventory](docs/screenshots/03-inventory.png) | ![Recipes](docs/screenshots/04-recipes.png) |
+
 ## ✨ Features
 
 - 🧾 **Live order management:** new orders appear instantly and move through preparing / completed statuses
